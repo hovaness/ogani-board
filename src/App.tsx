@@ -1,4 +1,4 @@
-import {  GitHubBanner, Refine } from "@refinedev/core";
+import { Authenticated, GitHubBanner, Refine } from "@refinedev/core";
 import { DevtoolsPanel, DevtoolsProvider } from "@refinedev/devtools";
 import { RefineKbar, RefineKbarProvider } from "@refinedev/kbar";
 
@@ -8,50 +8,61 @@ import {
 import "@refinedev/antd/dist/reset.css";
 
 import routerBindings, {
+  CatchAllNavigate,
   DocumentTitleHandler,
   UnsavedChangesNotifier,
 } from "@refinedev/react-router-v6";
 import { App as AntdApp } from "antd";
 import { BrowserRouter, Outlet, Route, Routes } from "react-router-dom";
 
-import {authProvider, dataProvider, liveProvider} from './providers'
+import { authProvider, dataProvider, liveProvider } from './providers'
 import { ForgotPassword, Home, Login, Register } from "./pages";
+import Layout from "./components/layout";
 
 function App() {
   return (
     <BrowserRouter>
-      <GitHubBanner />
       <RefineKbarProvider>
-          <AntdApp>
-            <DevtoolsProvider>
-              <Refine
-                notificationProvider={useNotificationProvider}
-                routerProvider={routerBindings}
-                dataProvider={dataProvider}
-                liveProvider={liveProvider}
-                authProvider={authProvider}
-                options={{
-                  syncWithLocation: true,
-                  warnWhenUnsavedChanges: true,
-                  useNewQueryKeys: true,
-                  projectId: "EjwRVx-Mv6R4L-lAMWvJ",
-                  liveMode: "auto",
-                }}
-              >
-                <Routes>
-                  <Route index element={<Home/>} />
-                  <Route path="/register" element={<Register/>} />
-                  <Route path="/login" element={<Login/>} />
-                  <Route path="/forgot-password" element={<ForgotPassword/>} />
-                </Routes>
+        <AntdApp>
+          <DevtoolsProvider>
+            <Refine
+              notificationProvider={useNotificationProvider}
+              routerProvider={routerBindings}
+              dataProvider={dataProvider}
+              liveProvider={liveProvider}
+              authProvider={authProvider}
+              options={{
+                syncWithLocation: true,
+                warnWhenUnsavedChanges: true,
+                useNewQueryKeys: true,
+                projectId: "EjwRVx-Mv6R4L-lAMWvJ",
+                liveMode: "auto",
+              }}
+            >
+              <Routes>
+                <Route path="/register" element={<Register />} />
+                <Route path="/login" element={<Login />} />
+                <Route path="/forgot-password" element={<ForgotPassword />} />
+                <Route
+                  element={
+                    <Authenticated key='authenticated-layout'
+                      fallback={<CatchAllNavigate to="/login" />}>
+                      <Layout>
+                        <Outlet />
+                      </Layout>
+                    </Authenticated>}
+                >
+                  <Route index element={<Home />} />
+                </Route>
+              </Routes>
 
-                <RefineKbar />
-                <UnsavedChangesNotifier />
-                <DocumentTitleHandler />
-              </Refine>
-              <DevtoolsPanel />
-            </DevtoolsProvider>
-          </AntdApp>
+              <RefineKbar />
+              <UnsavedChangesNotifier />
+              <DocumentTitleHandler />
+            </Refine>
+            <DevtoolsPanel />
+          </DevtoolsProvider>
+        </AntdApp>
       </RefineKbarProvider>
     </BrowserRouter>
   );

@@ -1,9 +1,12 @@
 import React from 'react'
+import CurrentUser from './current-user'
 
-const header = () => {
+const Header = () => {
   return (
-    <div>header</div>
+    <div>
+      <CurrentUser/>
+    </div>
   )
 }
 
-export default header
+export default Header
