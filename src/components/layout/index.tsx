@@ -1,12 +1,13 @@
 import { ThemedLayoutV2, ThemedTitleV2 } from '@refinedev/antd'
 import Header from './header'
-import Logo from '../../public/icons/ogani-logo.svg'
+import Logo from './logo'
 
 const Layout = ({children}: React.PropsWithChildren) => {
   return (
-    <ThemedLayoutV2 
+    <ThemedLayoutV2
     Header={Header}
-    Title={(titleProps) => <ThemedTitleV2 {...titleProps}  text='yrartu'/>}>
+    Title={(titleProps) => <ThemedTitleV2 icon = {titleProps.collapsed ? <Logo type='large'/> : <Logo type='small'/>}
+     {...titleProps}  text='OGANI'/>}>
         {children}
     </ThemedLayoutV2>
   )

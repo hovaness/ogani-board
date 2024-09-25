@@ -1,5 +1,6 @@
+import AuthTitle from "@/components/layout/auth-title";
 import { AuthPage } from "@refinedev/antd";
 
 export const Register = () => {
-  return <AuthPage type="register" />;
+  return <AuthPage title={<AuthTitle/>} type="register" />;
 };
