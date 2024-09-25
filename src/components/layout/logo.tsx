@@ -1,19 +1,18 @@
 
 
-const Logo = ({type}:{type:'small' | 'large' | 'xlarge'}) => {
+const Logo = ({type = 'medium'}:{type?:'medium' | 'large'}) => {
   const sizes = {
-    small: 25,
-    large: 50,
-    xlarge: 80,
+    medium: 50,
+    large: 80,
   }
 
   const currentSize = sizes[`${type}`]
   
   return (
     <div style={{
-       display: 'flex', alignItems: 'center', justifyContent: 'center'
+       display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer'
     }}>
-        <img width={currentSize } height={currentSize} src='/icons/logo-purple.svg'/>
+        <img  width={currentSize } height={currentSize} src='/icons/logo-purple.svg'/>
     </div>
   )
 }

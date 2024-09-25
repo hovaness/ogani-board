@@ -36,4 +36,10 @@ export const resources: IResourceItem[] = [
       icon: <ProjectOutlined />,
     },
   },
+  {
+    name: "login",
+  },
+  {
+    name: "register",
+  }
 ];

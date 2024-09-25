@@ -1,18 +1,20 @@
 import Logo from './logo'
 
-const AuthTitle = () => {
+
+const Title = ({type = 'medium'}:{type?:'medium' | 'large'}) => {
   return (
     <div style={{
         display:'flex',
         alignItems:'center',
-        gap:'20px'
+        gap:'20px',
+        cursor: 'pointer'
     }}>
-        <Logo type='xlarge'/>
+        <Logo type={type}/>
         <h1 style={{
           paddingTop:'20px'
-        }}>Ogani</h1>
+        }}>HAYASA</h1>
     </div>
   )
 }
 
-export default AuthTitle
+export default Title

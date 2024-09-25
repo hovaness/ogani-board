@@ -4,3 +4,12 @@
     box-shadow: none !important; /* Убирает тень у всех кнопок */
 }
 
+.ant-menu {
+    margin-top: 10pt;
+}
+/* custom.css */
+.ant-menu-item-selected {
+    background-color: #7F3D6A  !important; /* Цвет фона выбранного пункта */
+    color: #FFFFFF !important; /* Цвет текста выбранного пункта */
+}
+

@@ -21,8 +21,7 @@ import { BrowserRouter, Outlet, Route, Routes } from "react-router-dom";
 import { authProvider, dataProvider, liveProvider } from './providers'
 import { ForgotPassword, Home, Login, Register } from "./pages";
 import Layout from "./components/layout";
-import { tokenTheme } from "./config/theme";
-import { resources } from "./config/resources";
+import { resources, tokenTheme } from "./config";
 
 function App() {
   return (
@@ -79,7 +78,7 @@ function App() {
                       list: `${resource?.meta?.label}`,
                     };
 
-                    const suffix = "Ogani | ";
+                    const suffix = "HAYASA | ";
                     const title = suffix + actionPrefixMatcher[action || "list"];
 
                     return title;
