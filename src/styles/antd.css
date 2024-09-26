@@ -13,3 +13,7 @@
     color: #FFFFFF !important; /* Цвет текста выбранного пункта */
 }
 
+.ant-card {
+    border: none !important; /* Убираем обводку */
+}
+
